@@ -1,7 +1,6 @@
 import pandas as pd
 import os
 
-# test
 # Define the input and output directories
 input_dir = "./data/input"
 output_dir = "./data/output"

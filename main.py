@@ -6,7 +6,7 @@ input_dir = "./data/input"
 output_dir = "./data/output"
 
 # Define the variants and the additional columns needed for each variant
-variants = ["XS", "S", "M", "L", "XL", "XXL"]
+variants = [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48]
 
 # Ensure the output directory exists
 os.makedirs(output_dir, exist_ok=True)
@@ -32,9 +32,10 @@ for filename in os.listdir(input_dir):
             handle = row["Handle"]
             variant_inventory_policy = row["Variant Inventory Policy"]
             variant_fulfillment_service = row["Variant Fulfillment Service"]
+            collection = row["Collection"]
 
             # Add the original row if Option1 Value is XXS
-            if row["Option1 Value"] == "XXS":
+            if row["Option1 Value"] == 36:
                 new_rows.append(row.to_dict())
 
             # Iterate over each variant
@@ -49,6 +50,7 @@ for filename in os.listdir(input_dir):
                 new_row["Status"] = status
                 new_row["Variant Inventory Policy"] = variant_inventory_policy
                 new_row["Variant Fulfillment Service"] = variant_fulfillment_service
+                new_row["Collection"] = collection
                 new_rows.append(new_row)
 
         # Create a new DataFrame from the new rows
